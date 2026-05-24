@@ -1,0 +1,73 @@
+{
+    "personal_info": {
+        "profile_image": "assets\/images\/photo_2023-07-28_09-09-36.jpg",
+        "github_username": "fathan3",
+        "name": "Fathan Ruhul Alam",
+        "role": "Informatics Engineering Student",
+        "tagline": "Manusia Berkembang Karena Kemalasannya.",
+        "about": "Hai, iam student of university. Curious about new things is fun and I do that to increase the experience that might be useful for me later, i am very able to work in groups or do individual work. Ready to work thoroughly and responsibly it becomes my biggest capital.",
+        "email": "fathanra311@gmail.com",
+        "phone": "+62 857 9880 8596",
+        "location": "Indonesia",
+        "socials": {
+            "github": "https:\/\/github.com\/",
+            "linkedin": "https:\/\/linkedin.com\/",
+            "instagram": "https:\/\/instagram.com\/"
+        }
+    },
+    "skills": [
+        {
+            "name": "PHP",
+            "level": 85
+        },
+        {
+            "name": "HTML",
+            "level": 95
+        },
+        {
+            "name": "CSS",
+            "level": 95
+        },
+        {
+            "name": "JavaScript",
+            "level": 80
+        },
+        {
+            "name": "MySQL",
+            "level": 75
+        },
+        {
+            "name": "UI/UX Design",
+            "level": 70
+        },
+        {
+            "name": "Laravel",
+            "level": 60
+        },
+        {
+            "name": "Flutter",
+            "level": 70
+        },
+        {
+            "name": "Kotlin",
+            "level": 65
+        },
+        {
+            "name": "Node.js",
+            "level": 70
+        },
+        {
+            "name": "Next.js",
+            "level": 75
+        },
+        {
+            "name": "Bootstrap",
+            "level": 80
+        },
+        {
+            "name": "Tailwind",
+            "level": 85
+        }
+    ],
+    "projects": []
+}

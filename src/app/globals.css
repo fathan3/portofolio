@@ -148,9 +148,14 @@
             "location"
             "contact";
     }
-    .box-hero, .box-terminal, .box-skills, .box-projects, .box-location, .box-contact {
+    .box-hero, .box-skills, .box-projects, .box-location, .box-contact {
         grid-column: auto;
         grid-row: auto;
+    }
+    .box-terminal {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 300px;
     }
     .projects-grid {
         max-height: 575px;

@@ -7,7 +7,7 @@ export default function Projects({ githubUsername }: { githubUsername: string })
 
   useEffect(() => {
     if (githubUsername) {
-      fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=10`)
+      fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`)
         .then((res) => {
           if (!res.ok) throw new Error("GitHub API Error");
           return res.json();

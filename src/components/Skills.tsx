@@ -15,6 +15,7 @@ export default function Skills({ skills }: { skills: any[] }) {
     "Next.js": ["devicon-nextjs-plain"],
     Bootstrap: ["devicon-bootstrap-plain"],
     Tailwind: ["devicon-tailwindcss-original"],
+    Python: ["devicon-python-plain"],
   };
 
   return (

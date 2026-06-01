@@ -29,7 +29,7 @@ export default function Contact({ personalInfo }: { personalInfo: any }) {
             color: "var(--neon-blue)",
             fontSize: "0.9rem",
             padding: "10px",
-            background: "rgba(0, 240, 255, 0.05)",
+            background: "rgba(255, 255, 255, 0.05)",
             borderLeft: "2px solid var(--neon-blue)",
           }}
         >

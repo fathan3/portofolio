@@ -67,6 +67,10 @@
         {
             "name": "Tailwind",
             "level": 85
+        },
+        {
+            "name": "Python",
+            "level": 70
         }
     ],
     "projects": []

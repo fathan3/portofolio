@@ -57,12 +57,31 @@ export default function Terminal({ sysUser }: { sysUser: string }) {
   const processCommand = (cmd: string) => {
     const c = cmd.toLowerCase();
     if (c === "help") {
-      appendLog("AVAILABLE COMMANDS: help, whoami, clear, sudo hack");
+      appendLog("AVAILABLE COMMANDS: help, whoami, clear, sudo hack, ls, date, projects, contact, echo");
     } else if (c === "whoami") {
       appendLog("USER ALIAS: " + sysUser);
       appendLog("PRIVILEGE LEVEL: GUEST");
     } else if (c === "clear") {
       setLogs([]);
+    } else if (c === "ls") {
+      appendLog("Directory listing:");
+      appendLog("  USER_PROFILE.EXE");
+      appendLog("  projects.sh");
+      appendLog("  contact.sys");
+    } else if (c === "date") {
+      appendLog(new Date().toString());
+    } else if (c === "projects") {
+      appendLog("EXECUTING projects.sh...");
+      setTimeout(() => {
+        window.location.href = "/projects";
+      }, 1000);
+    } else if (c === "contact") {
+      appendLog("INITIATING contact.sys...");
+      setTimeout(() => {
+        window.location.href = "mailto:fathanra311@gmail.com";
+      }, 1000);
+    } else if (c.startsWith("echo ")) {
+      appendLog(cmd.substring(5));
     } else if (c === "sudo hack") {
       appendLog("WARNING: UNAUTHORIZED PRIVILEGE ESCALATION ATTEMPTED.", true);
       if (autoLogIntervalRef.current) clearInterval(autoLogIntervalRef.current);

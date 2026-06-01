@@ -51,7 +51,6 @@ export default function HUD() {
   return (
     <>
       <div className="scanlines"></div>
-      <div className="grid-overlay"></div>
       <div className="hud-top-left">SYS.VER: 9.4.2 // ONLINE</div>
       <div className="hud-top-right" style={{ display: "flex", gap: "15px", alignItems: "center", pointerEvents: "auto" }}>
         <button 

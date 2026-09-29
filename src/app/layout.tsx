@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
-import HUD from "@/components/HUD";
+import Navbar from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const shareTechMono = Share_Tech_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
+import data from "@/data/data.json";
 
 export const metadata: Metadata = {
-  title: "USER_PROFILE | DASHBOARD",
-  description: "Cyberpunk Portfolio",
+  title: "Fathan Ruhul Alam | Informatics Engineering & Developer Portfolio",
+  description:
+    "Portfolio of Fathan Ruhul Alam, an Informatics Engineering student focused on building clean, high-performance web and mobile applications.",
+  keywords: [
+    "Fathan Ruhul Alam",
+    "Portfolio",
+    "Informatics Engineering",
+    "Web Developer",
+    "Full-Stack",
+    "Next.js",
+    "Laravel",
+    "Flutter",
+  ],
+  authors: [{ name: "Fathan Ruhul Alam" }],
+  creator: "Fathan Ruhul Alam",
+  openGraph: {
+    title: "Fathan Ruhul Alam | Informatics Engineering & Developer Portfolio",
+    description:
+      "Portfolio of Fathan Ruhul Alam, Informatics Engineering student and full-stack developer.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({
@@ -21,8 +34,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { personal_info } = data;
+
   return (
-    <html lang="en">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <link
           rel="stylesheet"
@@ -33,8 +48,11 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
-      <body className={`${inter.variable} ${shareTechMono.variable} cyber-theme`}>
-        <HUD />
+      <body className="bg-black text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white min-h-screen">
+        <Navbar
+          githubUrl={personal_info.socials.github}
+          linkedinUrl={personal_info.socials.linkedin}
+        />
         {children}
         <Analytics />
       </body>

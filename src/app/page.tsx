@@ -1,38 +1,40 @@
 import data from "@/data/data.json";
-import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
-import Terminal from "@/components/Terminal";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
-import Geolocation from "@/components/Geolocation";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
   const { personal_info, skills } = data;
-  
+
   let repos = [];
   try {
-    const res = await fetch(`https://api.github.com/users/${personal_info.github_username}/repos?sort=updated&per_page=4`, { 
-        next: { revalidate: 3600 } 
-    });
+    const res = await fetch(
+      `https://api.github.com/users/${personal_info.github_username}/repos?sort=updated&per_page=6`,
+      {
+        next: { revalidate: 3600 },
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+        },
+      }
+    );
     if (res.ok) {
-        repos = await res.json();
+      repos = await res.json();
     }
   } catch (error) {
-      console.error("Failed to fetch repos", error);
+    console.error("Failed to fetch repos", error);
   }
 
   return (
     <>
-      <Preloader />
-      <main className="bento-container relative z-10">
+      <main className="min-h-screen bg-black text-white">
         <Hero personalInfo={personal_info} />
-        <Terminal sysUser={personal_info.name} />
         <Skills skills={skills} />
-        <Projects repos={repos} />
-        <Geolocation location={personal_info.location} />
+        <Projects repos={repos} githubUsername={personal_info.github_username} />
         <Contact personalInfo={personal_info} />
       </main>
+      <Footer personalInfo={personal_info} />
     </>
   );
 }

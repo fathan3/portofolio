@@ -63,10 +63,6 @@ export default function Hero({ personalInfo }: HeroProps) {
                 <i className="fas fa-graduation-cap text-zinc-500"></i>
                 Informatics Engineering
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-900/90 border border-zinc-800">
-                <i className="fas fa-code text-zinc-500"></i>
-                Web & Mobile Development
-              </span>
             </div>
 
             {/* Action Buttons */}
@@ -161,8 +157,8 @@ export default function Hero({ personalInfo }: HeroProps) {
                   <i className="fas fa-laptop-code text-sm"></i>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-zinc-200">Full-Stack Explorer</p>
-                  <p className="text-[11px] text-zinc-500">Web & Mobile Dev</p>
+                  <p className="text-xs font-semibold text-zinc-200">Web Developer</p>
+                  <p className="text-[11px] text-zinc-500">Informatics Student</p>
                 </div>
               </div>
             </div>

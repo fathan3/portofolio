@@ -74,6 +74,12 @@ export default function Navbar({
             Projects
           </a>
           <a
+            href="#certifications"
+            className="px-3.5 py-1.5 text-sm text-zinc-300 hover:text-white rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-zinc-400 outline-none"
+          >
+            Certifications
+          </a>
+          <a
             href="#contact"
             className="px-3.5 py-1.5 text-sm text-zinc-300 hover:text-white rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-zinc-400 outline-none"
           >
@@ -156,6 +162,13 @@ export default function Navbar({
               className="py-2.5 text-base text-zinc-300 hover:text-white font-medium transition-colors border-b border-zinc-900"
             >
               Projects
+            </a>
+            <a
+              href="#certifications"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 text-base text-zinc-300 hover:text-white font-medium transition-colors border-b border-zinc-900"
+            >
+              Certifications
             </a>
             <a
               href="#contact"

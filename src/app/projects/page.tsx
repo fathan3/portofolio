@@ -25,7 +25,12 @@ export default async function ProjectsPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <ProjectsArchive initialRepos={repos} username={username} />
+      <ProjectsArchive
+        initialRepos={repos}
+        username={username}
+        customProjects={data.projects}
+        excludedProjects={data.excluded_projects}
+      />
       <Footer personalInfo={data.personal_info} />
     </main>
   );

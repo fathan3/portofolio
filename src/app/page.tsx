@@ -2,6 +2,7 @@ import data from "@/data/data.json";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -11,7 +12,7 @@ export default async function Home() {
   let repos = [];
   try {
     const res = await fetch(
-      `https://api.github.com/users/${personal_info.github_username}/repos?sort=updated&per_page=6`,
+      `https://api.github.com/users/${personal_info.github_username}/repos?sort=updated&per_page=100`,
       {
         next: { revalidate: 3600 },
         headers: {
@@ -31,7 +32,13 @@ export default async function Home() {
       <main className="min-h-screen bg-black text-white">
         <Hero personalInfo={personal_info} />
         <Skills skills={skills} />
-        <Projects repos={repos} githubUsername={personal_info.github_username} />
+        <Projects
+          repos={repos}
+          githubUsername={personal_info.github_username}
+          customProjects={data.projects}
+          excludedProjects={data.excluded_projects}
+        />
+        <Certifications certifications={data.certifications} />
         <Contact personalInfo={personal_info} />
       </main>
       <Footer personalInfo={personal_info} />

@@ -12,12 +12,26 @@ interface RepoItem {
   topics?: string[];
 }
 
+interface CustomProject {
+  name: string;
+  description?: string;
+  demo_url?: string;
+  tags?: string[];
+}
+
 interface ProjectsProps {
   repos: RepoItem[];
   githubUsername?: string;
+  customProjects?: CustomProject[];
+  excludedProjects?: string[];
 }
 
-export default function Projects({ repos, githubUsername = "fathan3" }: ProjectsProps) {
+export default function Projects({
+  repos,
+  githubUsername = "fathan3",
+  customProjects = [],
+  excludedProjects = [],
+}: ProjectsProps) {
   const languageColors: Record<string, string> = {
     JavaScript: "bg-amber-400",
     TypeScript: "bg-blue-400",
@@ -29,7 +43,26 @@ export default function Projects({ repos, githubUsername = "fathan3" }: Projects
     Kotlin: "bg-purple-400",
   };
 
-  const displayRepos = repos.slice(0, 6);
+  const excludedSet = new Set(
+    excludedProjects.map((name) => name.toLowerCase().trim())
+  );
+  const activeRepos = repos.filter(
+    (repo) => !excludedSet.has(repo.name.toLowerCase().trim())
+  );
+
+  const orderMap = new Map(
+    customProjects.map((p, index) => [p.name.toLowerCase().trim(), index])
+  );
+
+  const sortedRepos = [...activeRepos].sort((a, b) => {
+    const nameA = a.name.toLowerCase().trim();
+    const nameB = b.name.toLowerCase().trim();
+    const idxA = orderMap.has(nameA) ? orderMap.get(nameA)! : 999;
+    const idxB = orderMap.has(nameB) ? orderMap.get(nameB)! : 999;
+    return idxA - idxB;
+  });
+
+  const displayRepos = sortedRepos.slice(0, 6);
 
   return (
     <section id="projects" className="py-20 md:py-28 border-t border-zinc-900 bg-black">
@@ -78,9 +111,20 @@ export default function Projects({ repos, githubUsername = "fathan3" }: Projects
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayRepos.map((repo) => {
+              const customData = customProjects.find(
+                (p) => p.name.toLowerCase() === repo.name.toLowerCase()
+              );
+              const description =
+                customData?.description ||
+                repo.description ||
+                "Repositori open-source untuk implementasi fitur dan eksplorasi rekayasa perangkat lunak.";
+
               const langColor = repo.language
                 ? languageColors[repo.language] || "bg-zinc-400"
                 : "bg-zinc-500";
+
+              const demoUrl =
+                customData?.demo_url?.trim() || repo.homepage?.trim() || null;
 
               return (
                 <div
@@ -125,13 +169,12 @@ export default function Projects({ repos, githubUsername = "fathan3" }: Projects
 
                     {/* Description */}
                     <p className="text-sm text-zinc-400 line-clamp-3 leading-relaxed mb-6">
-                      {repo.description ||
-                        "Open-source repository implementing features and exploration in software engineering."}
+                      {description}
                     </p>
                   </div>
 
                   {/* Footer / Meta */}
-                  <div className="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs">
+                  <div className="pt-4 border-t border-zinc-800/60 flex items-center justify-between gap-2 text-xs">
                     {repo.language ? (
                       <span className="inline-flex items-center gap-1.5 text-zinc-300 font-medium">
                         <span className={`w-2 h-2 rounded-full ${langColor}`}></span>
@@ -141,15 +184,30 @@ export default function Projects({ repos, githubUsername = "fathan3" }: Projects
                       <span className="text-zinc-500">Repository</span>
                     )}
 
-                    <a
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-white font-medium transition-colors inline-flex items-center gap-1"
-                    >
-                      <span>Code</span>
-                      <i className="fas fa-chevron-right text-[10px]"></i>
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-zinc-300 hover:text-white bg-zinc-800/70 hover:bg-zinc-800 border border-zinc-700/60 transition-colors"
+                        title="Lihat Kode di GitHub"
+                      >
+                        <i className="fab fa-github text-[11px]"></i>
+                        <span>Code</span>
+                      </a>
+                      {demoUrl && (
+                        <a
+                          href={demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 transition-colors shadow-sm"
+                          title="Kunjungi Live Demo / Deploy"
+                        >
+                          <span>Demo</span>
+                          <i className="fas fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
@@ -163,7 +221,7 @@ export default function Projects({ repos, githubUsername = "fathan3" }: Projects
             href="/projects"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-200 hover:text-white hover:bg-zinc-800 border border-zinc-800 transition-all min-h-[44px]"
           >
-            <span>View All Repositories ({repos.length || "All"})</span>
+            <span>View All Repositories ({activeRepos.length || "All"})</span>
             <i className="fas fa-arrow-right text-xs"></i>
           </Link>
         </div>

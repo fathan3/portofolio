@@ -16,14 +16,25 @@ interface RepoItem {
   updated_at?: string;
 }
 
+interface CustomProject {
+  name: string;
+  description?: string;
+  demo_url?: string;
+  tags?: string[];
+}
+
 interface ProjectsArchiveProps {
   initialRepos: RepoItem[];
   username: string;
+  customProjects?: CustomProject[];
+  excludedProjects?: string[];
 }
 
 export default function ProjectsArchive({
   initialRepos,
   username,
+  customProjects = [],
+  excludedProjects = [],
 }: ProjectsArchiveProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("all");
@@ -42,25 +53,54 @@ export default function ProjectsArchive({
     C: "bg-gray-400",
   };
 
+  const excludedSet = useMemo(() => {
+    return new Set(
+      excludedProjects.map((name) => name.toLowerCase().trim())
+    );
+  }, [excludedProjects]);
+
+  const orderMap = useMemo(() => {
+    return new Map(
+      customProjects.map((p, index) => [p.name.toLowerCase().trim(), index])
+    );
+  }, [customProjects]);
+
+  const availableRepos = useMemo(() => {
+    const list = initialRepos.filter(
+      (repo) => !excludedSet.has(repo.name.toLowerCase().trim())
+    );
+    return list.sort((a, b) => {
+      const nameA = a.name.toLowerCase().trim();
+      const nameB = b.name.toLowerCase().trim();
+      const idxA = orderMap.has(nameA) ? orderMap.get(nameA)! : 999;
+      const idxB = orderMap.has(nameB) ? orderMap.get(nameB)! : 999;
+      return idxA - idxB;
+    });
+  }, [initialRepos, excludedSet, orderMap]);
+
   // Collect all unique languages
   const availableLanguages = useMemo(() => {
     const langSet = new Set<string>();
-    initialRepos.forEach((repo) => {
+    availableRepos.forEach((repo) => {
       if (repo.language) langSet.add(repo.language);
       if (repo.all_languages) {
         repo.all_languages.forEach((l) => langSet.add(l));
       }
     });
     return Array.from(langSet).sort();
-  }, [initialRepos]);
+  }, [availableRepos]);
 
   // Filtered repos
   const filteredRepos = useMemo(() => {
-    return initialRepos.filter((repo) => {
+    return availableRepos.filter((repo) => {
+      const customData = customProjects.find(
+        (p) => p.name.toLowerCase() === repo.name.toLowerCase()
+      );
+      const desc = customData?.description || repo.description || "";
+
       const matchesSearch =
         repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (repo.description &&
-          repo.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        desc.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesLang =
         selectedLanguage === "all" ||
@@ -69,7 +109,7 @@ export default function ProjectsArchive({
 
       return matchesSearch && matchesLang;
     });
-  }, [initialRepos, searchQuery, selectedLanguage]);
+  }, [availableRepos, searchQuery, selectedLanguage, customProjects]);
 
   return (
     <div className="pt-28 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
@@ -137,7 +177,7 @@ export default function ProjectsArchive({
                 : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800/80"
             }`}
           >
-            All ({initialRepos.length})
+            All ({availableRepos.length})
           </button>
           {availableLanguages.map((lang) => (
             <button
@@ -159,7 +199,7 @@ export default function ProjectsArchive({
       {/* Results Count */}
       <div className="mb-6 flex items-center justify-between text-xs text-zinc-500">
         <span>
-          Showing {filteredRepos.length} of {initialRepos.length} repositories
+          Showing {filteredRepos.length} of {availableRepos.length} repositories
         </span>
         {(searchQuery || selectedLanguage !== "all") && (
           <button
@@ -201,9 +241,20 @@ export default function ProjectsArchive({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRepos.map((repo) => {
+            const customData = customProjects.find(
+              (p) => p.name.toLowerCase() === repo.name.toLowerCase()
+            );
+            const description =
+              customData?.description ||
+              repo.description ||
+              "Repositori open-source untuk implementasi fitur dan eksplorasi rekayasa perangkat lunak.";
+
             const langColor = repo.language
               ? languageColors[repo.language] || "bg-zinc-400"
               : "bg-zinc-500";
+
+            const demoUrl =
+              customData?.demo_url?.trim() || repo.homepage?.trim() || null;
 
             return (
               <div
@@ -241,11 +292,11 @@ export default function ProjectsArchive({
                   </div>
 
                   <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed mb-6">
-                    {repo.description || "No description provided for this repository."}
+                    {description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs">
+                <div className="pt-4 border-t border-zinc-800/60 flex items-center justify-between gap-2 text-xs">
                   {repo.language ? (
                     <span className="inline-flex items-center gap-1.5 text-zinc-300 font-medium">
                       <span className={`w-2 h-2 rounded-full ${langColor}`}></span>
@@ -255,15 +306,30 @@ export default function ProjectsArchive({
                     <span className="text-zinc-500">Repository</span>
                   )}
 
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-zinc-400 hover:text-white font-medium transition-colors"
-                  >
-                    <span>View Source</span>
-                    <i className="fas fa-chevron-right text-[10px]"></i>
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-zinc-300 hover:text-white bg-zinc-800/70 hover:bg-zinc-800 border border-zinc-700/60 transition-colors"
+                      title="Lihat Kode di GitHub"
+                    >
+                      <i className="fab fa-github text-[11px]"></i>
+                      <span>Code</span>
+                    </a>
+                    {demoUrl && (
+                      <a
+                        href={demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 transition-colors shadow-sm"
+                        title="Kunjungi Live Demo / Deploy"
+                      >
+                        <span>Demo</span>
+                        <i className="fas fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             );

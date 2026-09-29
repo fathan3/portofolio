@@ -14,9 +14,10 @@ export const metadata: Metadata = {
     "Informatics Engineering",
     "Web Developer",
     "Full-Stack",
-    "Next.js",
+    "PHP",
     "Laravel",
-    "Flutter",
+    "Tailwind CSS",
+    "Python",
   ],
   authors: [{ name: "Fathan Ruhul Alam" }],
   creator: "Fathan Ruhul Alam",
@@ -37,7 +38,7 @@ export default function RootLayout({
   const { personal_info } = data;
 
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link
           rel="stylesheet"

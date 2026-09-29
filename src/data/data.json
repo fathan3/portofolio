@@ -1,11 +1,11 @@
 {
     "personal_info": {
-        "profile_image": "assets\/images\/photo_2023-07-28_09-09-36.jpg",
+        "profile_image": "assets\/images\/IMG_2952.JPG",
         "github_username": "fathan3",
         "name": "Fathan Ruhul Alam",
         "role": "Informatics Engineering Student",
         "tagline": "Manusia Berkembang Karena Kemalasannya.",
-        "about": "Hai, iam student of university. Curious about new things is fun and I do that to increase the experience that might be useful for me later, i am very able to work in groups or do individual work. Ready to work thoroughly and responsibly it becomes my biggest capital.",
+        "about": "I am an Informatics Engineering student passionate about software development and modern web technologies. Driven by curiosity and a commitment to continuous learning, I enjoy solving problems and building clean, reliable applications. Adaptable and collaborative, I work effectively both in team settings and independently, with a strong focus on responsibility and attention to detail.",
         "email": "fathanra311@gmail.com",
         "phone": "+62 857 9880 8596",
         "location": "Indonesia",
@@ -18,7 +18,7 @@
     "skills": [
         {
             "name": "PHP",
-            "level": 85
+            "level": 90
         },
         {
             "name": "HTML",
@@ -26,7 +26,7 @@
         },
         {
             "name": "CSS",
-            "level": 95
+            "level": 85
         },
         {
             "name": "JavaScript",
@@ -38,27 +38,11 @@
         },
         {
             "name": "UI/UX Design",
-            "level": 70
+            "level": 60
         },
         {
             "name": "Laravel",
             "level": 60
-        },
-        {
-            "name": "Flutter",
-            "level": 70
-        },
-        {
-            "name": "Kotlin",
-            "level": 65
-        },
-        {
-            "name": "Node.js",
-            "level": 70
-        },
-        {
-            "name": "Next.js",
-            "level": 75
         },
         {
             "name": "Bootstrap",
@@ -66,12 +50,149 @@
         },
         {
             "name": "Tailwind",
-            "level": 85
+            "level": 75
         },
         {
             "name": "Python",
-            "level": 70
+            "level": 75
         }
     ],
-    "projects": []
+    "excluded_projects": [
+        "PSD",
+        "inven_bengkel",
+        "uas-kk",
+        "cylindr_track",
+        "web-biodata-fathan13",
+        "portofolio",
+        "VibeTask"
+    ],
+    "projects": [
+        {
+            "name": "Gudang-Abadi-WebApp",
+            "description": "Proyek pesanan klien (Client Project): Aplikasi web manajemen logistik tabung gas berbasis PHP dengan antarmuka modern untuk memantau stok real-time, pencatatan transaksi otomatis, dan pelacakan sirkulasi tabung mitra.",
+            "demo_url": "https://gudang-abaditrijaya.com/"
+        },
+        {
+            "name": "FindFound-Telang",
+            "description": "Sistem informasi pelaporan dan pencarian barang hilang atau temuan di lingkungan kampus Telang berbasis PHP Native dengan arsitektur MVC.",
+            "demo_url": "https://find-found.site.je/"
+        },
+        {
+            "name": "KalaLog",
+            "description": "Platform microblogging dan pencatatan jurnal modern yang dibangun menggunakan Next.js (App Router), TypeScript, Prisma, dan Shadcn UI.",
+            "demo_url": "https://kalalog-kohl.vercel.app"
+        },
+        {
+            "name": "JejakFiksi",
+            "description": "Aplikasi Information Retrieval berbasis Python Flask untuk membantu pengguna mencari dan menemukan rekomendasi novel yang relevan berdasarkan tema, alur cerita, atau genre.",
+            "demo_url": "https://jejak-fiksi.vercel.app"
+        },
+        {
+            "name": "optimasi-sampah",
+            "description": "Aplikasi optimasi penjadwalan mesin produksi menggunakan metode Dynamic Programming dan Round-Robin untuk memaksimalkan efisiensi waktu operasional.",
+            "demo_url": "https://optipro-jet.vercel.app"
+        },
+        {
+            "name": "Quiz",
+            "description": "Aplikasi kuis flashcard interaktif berbasis Python Flask dan MySQL yang menerapkan arsitektur Object-Oriented Programming (OOP) untuk evaluasi pembelajaran.",
+            "demo_url": "https://quizzz-red.vercel.app"
+        },
+        {
+            "name": "smart-attendance-system",
+            "description": "Sistem absensi terintegrasi scanner RFID untuk mencatat kehadiran mahasiswa dan panitia acara Himatif secara real-time, lengkap dengan dashboard statistik dan manajemen agenda.",
+            "demo_url": ""
+        },
+        {
+            "name": "RekomendasiGunungSAW",
+            "description": "Sistem Pendukung Keputusan (SPK) pemilihan gunung di Jawa Tengah berbasis PHP dan MySQL menggunakan metode Simple Additive Weighting (SAW).",
+            "demo_url": ""
+        },
+        {
+            "name": "GudangSentosa",
+            "description": "Sistem informasi manajemen pergudangan berbasis PHP dan MySQL yang mengimplementasikan konversi aljabar relasional ke query SQL untuk pencatatan stok dan laporan aset.",
+            "demo_url": ""
+        },
+        {
+            "name": "gunungku",
+            "description": "Aplikasi web asisten dan manajemen pendakian gunung berbasis PHP Native yang dilengkapi checklist perlengkapan, simaksi digital, forum komunitas, dan chatbot AI berbasis Google Gemini.",
+            "demo_url": ""
+        },
+        {
+            "name": "ChatKonseling",
+            "description": "Aplikasi web chat konseling daring berbasis Python FastAPI dan Tailwind CSS yang mengimplementasikan Mediator Design Pattern untuk komunikasi terpusat yang aman.",
+            "demo_url": ""
+        },
+        {
+            "name": "Website-PustakaMuda",
+            "description": "Platform perpustakaan digital berbasis PHP dan MySQL untuk memfasilitasi pencarian katalog buku, proses peminjaman mandiri, dan manajemen data keanggotaan.",
+            "demo_url": ""
+        },
+        {
+            "name": "kaladana_app",
+            "description": "Aplikasi mobile manajemen keuangan pribadi (Personal Finance) berbasis Flutter untuk mencatat transaksi harian, analisis pengeluaran, dan pelacakan target tabungan.",
+            "demo_url": ""
+        },
+        {
+            "name": "to-do-list",
+            "description": "Aplikasi Android to-do list berbasis Kotlin untuk mencatat daftar tugas, checklist aktivitas harian, dan pemantauan status penyelesaian pekerjaan.",
+            "demo_url": ""
+        },
+        {
+            "name": "frandalibrary",
+            "description": "Aplikasi web perpustakaan digital berbasis PHP, MySQL, dan Bootstrap 5 dengan tiga tingkat hak akses (Admin, Petugas, Peminjam) serta visualisasi data peminjaman menggunakan Chart.js.",
+            "demo_url": ""
+        }
+    ],
+    "certifications": [
+        {
+            "id": "cert-1",
+            "title": "ACP #1 - Hardware Fundamental",
+            "issuer": "Axioo Class Program (ACP)",
+            "date": "2023",
+            "credential_id": "A01428640",
+            "credential_url": "",
+            "file": "/assets/certificates/sertif-acp1.pdf",
+            "description": "Computer Hardware"
+        },
+        {
+            "id": "cert-2",
+            "title": "ACP #3 - Hardware Troubleshooting - Basic Level",
+            "issuer": "Axioo Class Program (ACP)",
+            "date": "2023",
+            "credential_id": "A01430356",
+            "credential_url": "",
+            "file": "/assets/certificates/sertif-acp3.pdf",
+            "description": "Computer Hardware"
+        },
+        {
+            "id": "cert-3",
+            "title": "Security Product Knowledge",
+            "issuer": "Telview Security Academy",
+            "date": "2023",
+            "credential_id": "TCI/SPK/20230826/DBP/FRA",
+            "credential_url": "",
+            "file": "/assets/certificates/sertif-tsa.pdf",
+            "description": "Network Security"
+        },
+        {
+            "id": "cert-4",
+            "title": "IT Specialist HTML-CSS",
+            "issuer": "Pearson",
+            "date": "2023",
+            "credential_id": "wdUCu-FaSN",
+            "credential_url": "https://www.certiport.com/portal/pages/credentialverification.aspx",
+            "file": "/assets/certificates/Certificate ACP - ITS HTML and CSS SMK Doa Bangsa Pelabuhan Ratu.pdf",
+            "description": "Programming"
+        },
+        {
+            "id": "cert-5",
+            "title": "Makeblock Logic Fundamental",
+            "issuer": "Makeblock",
+            "date": "2023",
+            "credential_id": "MBLF0000943",
+            "credential_url": "",
+            "file": "/assets/certificates/sertif-makeblock.pdf",
+            "description": "Robotic Logic"
+        }
+    ]
 }

@@ -8,6 +8,7 @@ interface HeroProps {
     location: string;
     profile_image?: string;
     email: string;
+    cv_file?: string;
     socials: {
       github?: string;
       linkedin?: string;
@@ -22,6 +23,8 @@ export default function Hero({ personalInfo }: HeroProps) {
       ? personalInfo.profile_image
       : `/${personalInfo.profile_image}`
     : "/assets/images/profile.png";
+
+  const cvUrl = personalInfo.cv_file || "/assets/cv/CV Fathan Ruhul Alam.pdf";
 
   return (
     <section id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
@@ -82,7 +85,7 @@ export default function Hero({ personalInfo }: HeroProps) {
               </a>
 
               <a
-                href="/assets/cv/resume.pdf"
+                href={encodeURI(cvUrl)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-medium bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-900/60 border border-zinc-800/80 transition-all focus-visible:ring-2 focus-visible:ring-zinc-400 outline-none min-h-[44px]"

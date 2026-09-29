@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message'])) {
                 <p class="typewriter" id="hero-typewriter" data-text="<?= htmlspecialchars($personal_info['about']) ?>"></p>
                 <div class="action-btns">
                     <a href="#contact-box" class="cyber-btn">INITIATE_CONTACT</a>
-                    <a href="assets/cv/resume.pdf" download class="cyber-btn" style="border-color: var(--neon-green); color: var(--neon-green);">DOWNLOAD_CV.pdf</a>
+                    <a href="assets/cv/CV%20Fathan%20Ruhul%20Alam.pdf" download="CV Fathan Ruhul Alam.pdf" class="cyber-btn" style="border-color: var(--neon-green); color: var(--neon-green);">DOWNLOAD_CV.pdf</a>
                 </div>
             </div>
         </div>

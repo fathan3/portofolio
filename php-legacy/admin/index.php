@@ -15,7 +15,7 @@ if (isset($_FILES['image_upload'])) {
     
     if ($upload_target === 'cv') {
         $target_dir = "../assets/cv/";
-        $filename = "resume.pdf";
+        $filename = "CV Fathan Ruhul Alam.pdf";
     } else {
         $target_dir = "../assets/images/";
         $filename = basename($_FILES["image_upload"]["name"]);

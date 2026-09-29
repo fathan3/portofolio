@@ -6,11 +6,13 @@ import Link from "next/link";
 interface NavbarProps {
   githubUrl?: string;
   linkedinUrl?: string;
+  cvUrl?: string;
 }
 
 export default function Navbar({
   githubUrl = "https://github.com/fathan3/",
   linkedinUrl = "https://linkedin.com/in/fathan-ruhul-alam-5422b5218/",
+  cvUrl = "/assets/cv/CV Fathan Ruhul Alam.pdf",
 }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -114,7 +116,7 @@ export default function Navbar({
             </a>
           )}
           <a
-            href="/assets/cv/resume.pdf"
+            href={encodeURI(cvUrl)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-semibold text-zinc-900 bg-white hover:bg-zinc-200 transition-all rounded-lg shadow-sm hover:shadow focus-visible:ring-2 focus-visible:ring-white outline-none"
@@ -179,7 +181,7 @@ export default function Navbar({
             </a>
             <div className="pt-3 flex items-center gap-3">
               <a
-                href="/assets/cv/resume.pdf"
+                href={encodeURI(cvUrl)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 text-center py-2.5 px-4 text-xs uppercase tracking-wider font-semibold text-zinc-900 bg-white hover:bg-zinc-200 transition-colors rounded-lg"

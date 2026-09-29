@@ -53,6 +53,7 @@ export default function RootLayout({
         <Navbar
           githubUrl={personal_info.socials.github}
           linkedinUrl={personal_info.socials.linkedin}
+          cvUrl={personal_info.cv_file}
         />
         {children}
         <Analytics />

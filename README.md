@@ -1,6 +1,6 @@
 # Fathan's Cyberpunk Bento Portfolio
 
-**Live Preview:** [https://fathanruhulalam.vercel.app/](https://fathanruhulalam.vercel.app/)
+**Live Preview:** [https://fathanruhulalam.my.id/](https://fathanruhulalam.my.id/)
 
 A modern, interactive cyberpunk-themed portfolio built with **Next.js**, React, and Vanilla CSS. It features a sleek Bento-box layout, an interactive terminal, dynamic GitHub project fetching (with SSR caching), and an on-the-fly theme switcher.
 

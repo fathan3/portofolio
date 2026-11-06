@@ -104,6 +104,11 @@
             "demo_url": "https://sig-tutupan-lahan-jawa-timur.streamlit.app/"
         },
         {
+            "name": "audioPSD_SVM",
+            "description": "Aplikasi Proyek Sains Data (PSD) berbasis web untuk klasifikasi dan analisis fitur data audio menggunakan algoritma Support Vector Machine (SVM).",
+            "demo_url": "https://kelompok-10.proyeksainsdata.my.id/"
+        },
+        {
             "name": "smart-attendance-system",
             "description": "Sistem absensi terintegrasi scanner RFID untuk mencatat kehadiran mahasiswa dan panitia acara Himatif secara real-time, lengkap dengan dashboard statistik dan manajemen agenda.",
             "demo_url": ""

@@ -99,6 +99,11 @@
             "demo_url": "https://quizzz-red.vercel.app"
         },
         {
+            "name": "SIG-Tutupan-Lahan-Jawa-Timur",
+            "description": "Sistem Informasi Geografis (SIG) berbasis Streamlit untuk visualisasi spasial, analisis, dan pemetaan data tutupan lahan di wilayah Jawa Timur.",
+            "demo_url": "https://sig-tutupan-lahan-jawa-timur.streamlit.app/"
+        },
+        {
             "name": "smart-attendance-system",
             "description": "Sistem absensi terintegrasi scanner RFID untuk mencatat kehadiran mahasiswa dan panitia acara Himatif secara real-time, lengkap dengan dashboard statistik dan manajemen agenda.",
             "demo_url": ""
